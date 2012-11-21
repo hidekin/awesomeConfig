@@ -1,5 +1,5 @@
 --Widgets
-vicious = require("vicious")
+--vicious = require("vicious")
 --widgets precious
 require("precious.battery")
 require("precious.cpu")
