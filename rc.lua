@@ -1,7 +1,5 @@
--- add -- to disable a widget in the widget section
-
 --Widgets
-vicious = require("vicious")
+--vicious = require("vicious")
 --widgets precious
 require("precious.battery")
 require("precious.cpu")
@@ -46,9 +44,9 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
 -- beautiful.init("/usr/share/awesome/themes/default/theme.lua")
-beautiful.init(awful.util.getdir("config") .. "/themes/lined/theme.lua")
+beautiful.init(awful.util.getdir("config") .. "/themes/arch/theme.lua")
 -- This is used later as the default terminal and editor to run.
-terminal = "gnome-terminal"
+terminal = "xterm"
 editor = os.getenv("EDITOR") or "nano"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -77,11 +75,14 @@ layouts =
 }
 -- }}}
 
---{{{ Tags Name 
-tagone=tag({name="one"})
-tagtwo=tag({name="two",layout="floating"})
-
-
+-- {{{ Tags
+-- Define a tag table which hold all screen tags.
+tags = {}
+for s = 1, screen.count() do
+    -- Each screen has its own tag table.
+    tags[s] = awful.tag({ 1, 2, 3, 4, 5, 6, 7, 8, 9 }, s, layouts[1])
+end
+-- }}}
 
  -- applications menu
   require('freedesktop.utils')
@@ -115,13 +116,11 @@ tagtwo=tag({name="two",layout="floating"})
   end
 
 -- {{{ Wibox
-
 -- Create a textclock widget
 mytextclock = awful.widget.textclock({ align = "right" })
 
 -- Create a systray
 mysystray = widget({ type = "systray" })
-
 
 -- Create a wibox for each screen and add it
 mywibox = {}
@@ -409,6 +408,5 @@ end)
 client.add_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.add_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
-awful.util.spawn_with_shell("nm-applet &")
+awful.util.spawn_with_shell("networkmanager")
 awful.util.spawn_with_shell("xscreensaver -no-splash")
-
