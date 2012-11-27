@@ -46,7 +46,7 @@ end
 -- beautiful.init("/usr/share/awesome/themes/default/theme.lua")
 beautiful.init(awful.util.getdir("config") .. "/themes/arch/theme.lua")
 -- This is used later as the default terminal and editor to run.
-terminal = "xterm"
+terminal = "gnome-terminal"
 editor = os.getenv("EDITOR") or "nano"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -80,7 +80,7 @@ layouts =
 tags = {}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
-    tags[s] = awful.tag({ 1, 2, 3, 4, 5, 6, 7, 8, 9 }, s, layouts[1])
+    tags[s] = awful.tag({ "1⇋ Main", "2⇋ Admin.", "3⇋ www/Web", "4⇋ Terminal", "5⇋ Multimedia","6⇋ Development"}, s, layouts[1])
 end
 -- }}}
 
@@ -96,7 +96,8 @@ end
      { "manual", terminal .. " -e man awesome", freedesktop.utils.lookup_icon({ icon = 'help' }) },
      { "edit config", editor_cmd .. " " .. awful.util.getdir("config") .. "/rc.lua", freedesktop.utils.lookup_icon({ icon = 'package_settings' }) },
      { "restart", awesome.restart, freedesktop.utils.lookup_icon({ icon = 'gtk-refresh' }) },
-     { "quit", awesome.quit, freedesktop.utils.lookup_icon({ icon = 'gtk-quit' }) }
+     { "quit", awesome.quit, freedesktop.utils.lookup_icon({ icon = 'gtk-quit' }) },
+    	
   }
   table.insert(menu_items, { "awesome", myawesomemenu, beautiful.awesome_icon })
   table.insert(menu_items, { "open terminal", terminal, freedesktop.utils.lookup_icon({icon = 'terminal'}) })
@@ -373,8 +374,23 @@ awful.rules.rules = {
     { rule = { class = "gimp" },
       properties = { floating = true } },
     -- Set Firefox to always map on tags number 2 of screen 1.
-    -- { rule = { class = "Firefox" },
-    --   properties = { tag = tags[1][2] } },
+    { rule = { class = "Firefox" },
+       properties = { tag = tags[1][3] } },
+    { rule = { class = "Gnome-terminal" },
+       properties = { tag = tags[1][4] } },	
+	{ rule = { class = "Smplayer" },
+       properties = { tag = tags[1][5] } },
+	{ rule = { class = "Mplayer" },
+       properties = { tag = tags[1][5] } },
+   { rule = { class = "Vlc" },
+       properties = { tag = tags[1][5] } },
+
+   { rule = { class = "Audacious" },
+       properties = { tag = tags[1][5] } },
+   { rule = { class = "Netbeans" },
+       properties = { tag = tags[1][5] } },
+	{ rule = { class = "Eclipse" },
+       properties = { tag = tags[1][5] } },
 }
 -- }}}
 
@@ -408,5 +424,27 @@ end)
 client.add_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.add_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
-awful.util.spawn_with_shell("networkmanager")
-awful.util.spawn_with_shell("xscreensaver -no-splash")
+--awful.util.spawn_with_shell(" run_once nm-applet")
+--awful.util.spawn_with_shell("xscreensaver -no-splash")
+--awful.util.spawn_with_shell("xbindkeys &")
+
+
+-- Autorun programs
+autorun = true
+autorunApps =
+{
+   "xscreensaver -no-splash",
+   "xbindkeys",
+   --"firefox",
+   "nm-applet",	
+}
+if autorun then
+   for app = 1, #autorunApps do
+       awful.util.spawn_with_shell("/home/matthias/.config/awesome/run_once.sh " .. autorunApps[app])
+   end
+end
+
+
+
+
+
