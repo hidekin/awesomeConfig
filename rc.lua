@@ -391,6 +391,8 @@ awful.rules.rules = {
        properties = { tag = tags[1][5] } },
 	{ rule = { class = "Eclipse" },
        properties = { tag = tags[1][5] } },
+{ rule = { class = "Pidgin" },
+       properties = { tag = tags[1][3] } },
 }
 -- }}}
 
