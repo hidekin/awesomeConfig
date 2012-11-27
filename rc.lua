@@ -80,7 +80,7 @@ layouts =
 tags = {}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
-    tags[s] = awful.tag({ "1⇋ Main", "2⇋ Admin.", "3⇋ www/Web", "4⇋ Terminal", "5⇋ Multimedia","6⇋ Development"}, s, layouts[1])
+    tags[s] = awful.tag({ "1⇋ Main", "2⇋ Admin.", "3⇋ www/Web", "4⇋ Terminal", "5⇋ Video","6⇋ Audio","7⇋ Developement"}, s, layouts[1])
 end
 -- }}}
 
@@ -386,21 +386,23 @@ awful.rules.rules = {
        properties = { tag = tags[1][5] } },
 
    { rule = { class = "Audacious" },
-       properties = { tag = tags[1][5] } },
+       properties = { tag = tags[1][6] } },
    { rule = { class = "Netbeans" },
-       properties = { tag = tags[1][5] } },
+       properties = { tag = tags[1][7] } },
 	{ rule = { class = "Eclipse" },
-       properties = { tag = tags[1][5] } },
+       properties = { tag = tags[1][7] } },
 { rule = { class = "Pidgin" },
        properties = { tag = tags[1][3] } },
 { rule = { class = "Gvim" },
-       properties = { tag = tags[1][6] } },
+       properties = { tag = tags[1][7] } },
 { rule = { class = "Xchat" },
        properties = { tag = tags[1][3] } },
 { rule = { class = "Chromium" },
        properties = { tag = tags[1][3] } },
 { rule = { class = "Leafpad" },
-       properties = { tag = tags[1][6] } },
+       properties = { tag = tags[1][7] } },
+{ rule = { class = "Pcmanfm" },
+       properties = { tag = tags[1][1] } },
 }
 -- }}}
 
