@@ -393,6 +393,14 @@ awful.rules.rules = {
        properties = { tag = tags[1][5] } },
 { rule = { class = "Pidgin" },
        properties = { tag = tags[1][3] } },
+{ rule = { class = "Gvim" },
+       properties = { tag = tags[1][6] } },
+{ rule = { class = "Xchat" },
+       properties = { tag = tags[1][3] } },
+{ rule = { class = "Chromium" },
+       properties = { tag = tags[1][3] } },
+{ rule = { class = "Leafpad" },
+       properties = { tag = tags[1][6] } },
 }
 -- }}}
 
