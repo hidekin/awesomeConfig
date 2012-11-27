@@ -414,6 +414,8 @@ awful.rules.rules = {
        properties = { tag = tags[1][8] } },
 { rule = { class = "libreoffice --calc" },
        properties = { tag = tags[1][8] } },
+{ rule = { class = "XMind" },
+       properties = { tag = tags[1][8] } },
 
 
 
