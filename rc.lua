@@ -44,7 +44,8 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
 -- beautiful.init("/usr/share/awesome/themes/default/theme.lua")
-beautiful.init(awful.util.getdir("config") .. "/themes/lined/theme.lua")
+beautiful.init(awful.util.getdir("config") .. 
+"/themes/elric/theme.lua")
 -- This is used later as the default terminal and editor to run.
 terminal = "gnome-terminal"
 editor = os.getenv("EDITOR") or "nano"
@@ -87,7 +88,7 @@ end
 
  -- applications menu
   require('freedesktop.utils')
-  freedesktop.utils.terminal = terminal  -- default: "xterm"
+  freedesktop.utils.terminal = terminal  -- default: "gnome-terminal"
   freedesktop.utils.icon_theme = 'gnome' -- look inside /usr/share/icons/, default: nil (don't use icon theme)
   require('freedesktop.menu')
   -- require("debian.menu")
@@ -464,11 +465,13 @@ autorunApps =
    "xscreensaver -no-splash",
    "xbindkeys",
    --"firefox",
-   "nm-applet",	
+   "nm-applet",
+"gnome-sound-applet",	
 }
 if autorun then
    for app = 1, #autorunApps do
-       awful.util.spawn_with_shell("/home/matthias/.config/awesome/run_once.sh " .. autorunApps[app])
+       awful.util.spawn_with_shell(awful.util.getdir("config") .. "run_once.sh" .. autorunApps[app])
+
    end
 end
 
