@@ -1,5 +1,5 @@
 --Widgets
---vicious = require("vicious")
+vicious = require("vicious")
 --widgets precious
 require("precious.battery")
 require("precious.cpu")
@@ -45,7 +45,7 @@ end
 -- Themes define colours, icons, and wallpapers
 -- beautiful.init("/usr/share/awesome/themes/default/theme.lua")
 beautiful.init(awful.util.getdir("config") .. 
-"/themes/elric/theme.lua")
+"/themes/bamboo/theme.lua")
 -- This is used later as the default terminal and editor to run.
 terminal = "gnome-terminal"
 editor = os.getenv("EDITOR") or "nano"
@@ -417,6 +417,8 @@ awful.rules.rules = {
        properties = { tag = tags[1][8] } },
 { rule = { class = "XMind" },
        properties = { tag = tags[1][8] } },
+{ rule = { class = "Dia" },
+       properties = { tag = tags[1][8] } },
 
 
 
@@ -466,11 +468,11 @@ autorunApps =
    "xbindkeys",
    --"firefox",
    "nm-applet",
-"gnome-sound-applet",	
-}
+ }
 if autorun then
    for app = 1, #autorunApps do
-       awful.util.spawn_with_shell(awful.util.getdir("config") .. "run_once.sh" .. autorunApps[app])
+awful.util.spawn_with_shell("/home/matthias/.config/awesome/run_once.sh " .. autorunApps[app]) 
+-- awful.util.spawn_with_shell(awful.util.getdir("config") .. "run_once.sh" .. autorunApps[app])
 
    end
 end
