@@ -47,7 +47,7 @@ end
 beautiful.init(awful.util.getdir("config") .. 
 "/themes/bamboo/theme.lua")
 -- This is used later as the default terminal and editor to run.
-terminal = "gnome-terminal"
+terminal = "terminator"
 editor = os.getenv("EDITOR") or "nano"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -88,7 +88,7 @@ end
 
  -- applications menu
   require('freedesktop.utils')
-  freedesktop.utils.terminal = terminal  -- default: "gnome-terminal"
+  freedesktop.utils.terminal = terminal  -- default: "terminator"
   freedesktop.utils.icon_theme = 'gnome' -- look inside /usr/share/icons/, default: nil (don't use icon theme)
   require('freedesktop.menu')
   -- require("debian.menu")
@@ -378,7 +378,7 @@ awful.rules.rules = {
     -- Set Firefox to always map on tags number 2 of screen 1.
     { rule = { class = "Firefox" },
        properties = { tag = tags[1][3] } },
-    { rule = { class = "Gnome-terminal" },
+    { rule = { class = "Terminator" },
        properties = { tag = tags[1][4] } },	
 	{ rule = { class = "Smplayer" },
        properties = { tag = tags[1][5] } },
@@ -468,6 +468,7 @@ autorunApps =
    "xbindkeys",
    --"firefox",
    "nm-applet",
+   
  }
 if autorun then
    for app = 1, #autorunApps do
