@@ -1,8 +1,8 @@
 --Widgets
-vicious = require("vicious")
+--vicious = require("vicious")
 --widgets precious
-require("precious.battery")
-require("precious.cpu")
+--require("precious.battery")
+--require("precious.cpu")
 require("precious.ram")
 require("precious.calendar")
 
@@ -76,14 +76,40 @@ layouts =
 }
 -- }}}
 
+
+ -- {{{ Tags
+ tags = {
+   settings = {
+     { names  = { "FILES", "EDITOR", "WWW", "TERMINAL" },
+       layout = { layouts[2], layouts[1], layouts[1], layouts[4] }
+     },
+     { names  = { "VIDEO", "AUDIO", "DEVELOPMENT",  "OFFICE" },
+       layout = { layouts[3], layouts[2], layouts[2], layouts[5] }
+ }}}
+ 
+ for s = 1, screen.count() do
+     tags[s] = awful.tag(tags.settings[s].names, s, tags.settings[s].layout)
+ end
+ -- }}}
+
+
 -- {{{ Tags
 -- Define a tag table which hold all screen tags.
-tags = {}
-for s = 1, screen.count() do
+--tags = {}
+--for s = 1, screen.count() do
     -- Each screen has its own tag table.
-    tags[s] = awful.tag({ "1⇋ Main", "2⇋ Admin.", "3⇋ www/Web", "4⇋ Terminal", "5⇋ Video","6⇋ Audio","7⇋ Development","8⇋ Office"}, s, 
-layouts[1])
-end
+   
+--tags = {
+    --  names = { "[1:FILES]", "[2:IRC]", "[3:WEB]", "[4:TERMINAL]", "[5:VIDEO]", "[6:AUDIO]", "[7:DEVELOPMENT]", "[8:OFFICE]", "[9:SSH]"},
+    --  layout = { layouts[2], layouts[2], layouts[4], layouts[2], layouts[1], layouts[1], layouts[2], layouts[2], layouts[2] }
+  --    }
+-- tags[s] = awful.tag({ "1⇋ Main", "2⇋ Admin.", "3⇋ www/Web", "4⇋ Terminal", "5⇋ Video","6⇋ Audio","7⇋ Development","8⇋ Office"}, s, 
+--layouts[1])
+--for s = 1, screen.count() do
+    -- Each screen has its own tag table.
+
+--tags[s] = awful.tag(tags.names, s, tags.layout)
+--end
 -- }}}
 
  -- applications menu
@@ -213,12 +239,7 @@ for s = 1, screen.count() do
         mytasklist[s],
 	mytextclock,
         layout = awful.widget.layout.horizontal.rightleft
-    }
-
-
-
-
-       
+       }
 end
 -- }}}
 
@@ -381,22 +402,22 @@ awful.rules.rules = {
     { rule = { class = "Terminator" },
        properties = { tag = tags[1][4] } },	
 	{ rule = { class = "Smplayer" },
-       properties = { tag = tags[1][5] } },
+       properties = { tag = tags[2][1] } },
 	{ rule = { class = "MPlayer" },
-       properties = { tag = tags[1][5] },floating = true },
+       properties = { tag = tags[2][1] },floating = true },
    { rule = { class = "Vlc" },
-       properties = { tag = tags[1][5] } },
+       properties = { tag = tags[2][1] } },
 
    { rule = { class = "Audacious" },
-       properties = { tag = tags[1][6] } },
+       properties = { tag = tags[2][2] } },
    { rule = { class = "Netbeans" },
-       properties = { tag = tags[1][7] } },
+       properties = { tag = tags[2][3] } },
 	{ rule = { class = "Eclipse" },
-       properties = { tag = tags[1][7] } },
+       properties = { tag = tags[2][3] } },
 { rule = { class = "Pidgin" },
        properties = { tag = tags[1][3] } },
 { rule = { class = "Gvim" },
-       properties = { tag = tags[1][7] } },
+       properties = { tag = tags[1][2] } },
 { rule = { class = "Xchat" },
        properties = { tag = tags[1][3] } },
 { rule = { class = "Chromium" },
@@ -406,19 +427,19 @@ awful.rules.rules = {
 { rule = { class = "Pcmanfm" },
        properties = { tag = tags[1][1] } },
 { rule = { class = "libreoffice --writer" },
-       properties = { tag = tags[1][8] } },
+       properties = { tag = tags[2][4] } },
 { rule = { class = "libreoffice --base" },
-       properties = { tag = tags[1][8] } },
+       properties = { tag = tags[2][4] } },
 { rule = { class = "libreoffice --impress" },
-       properties = { tag = tags[1][8] } },
+       properties = { tag = tags[2][4] } },
 { rule = { class = "libreoffice --writer" },
-       properties = { tag = tags[1][8] } },
+       properties = { tag = tags[2][4] } },
 { rule = { class = "libreoffice --calc" },
-       properties = { tag = tags[1][8] } },
+       properties = { tag = tags[2][4] } },
 { rule = { class = "XMind" },
-       properties = { tag = tags[1][8] } },
+       properties = { tag = tags[2][4] } },
 { rule = { class = "Dia" },
-       properties = { tag = tags[1][8] } },
+       properties = { tag = tags[2][4] } },
 
 
 
