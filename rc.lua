@@ -1,5 +1,6 @@
 
---Widgets
+ require("revelation")
+
 --vicious = require("vicious")
 --widgets precious
 require("precious.battery")
@@ -16,7 +17,7 @@ require("awful.rules")
 require("beautiful")
 -- Notification library
 require("naughty")
-
+ 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -45,7 +46,7 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
 -- beautiful.init("/usr/share/awesome/themes/default/theme.lua")
-beautiful.init(awful.util.getdir("config") .. "/themes/bamboo/theme.lua")
+beautiful.init(awful.util.getdir("config") .. "/themes/lined/theme.lua")
 -- This is used later as the default terminal and editor to run.
 terminal = "terminator"
 editor = os.getenv("EDITOR") or "nano"
@@ -99,7 +100,9 @@ autorunApps =
    "xbindkeys",
    --"firefox",
    "nm-applet",
-   
+   "wmname LG3D",
+   "xcompmgr",
+
  }
 if autorun then
    for app = 1, #autorunApps do
