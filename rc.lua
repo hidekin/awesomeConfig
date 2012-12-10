@@ -1,12 +1,12 @@
 
  require("revelation")
 
---vicious = require("vicious")
+vicious = require("vicious")
 --widgets precious
 require("precious.battery")
-require("precious.cpu")
-require("precious.ram")
-require("precious.calendar")
+--require("precious.cpu")
+--require("precious.ram")
+--require("precious.calendar")
 
 
 -- Standard awesome library
@@ -79,18 +79,13 @@ layouts =
 
 
 
- 
 dofile(awful.util.getdir("config") .. "/" .. "tags.lua")
 dofile(awful.util.getdir("config") .. "/" .. "menu.lua")
-
 dofile(awful.util.getdir("config") .. "/" .. "wibox.lua")
-
 dofile(awful.util.getdir("config") .. "/" .. "mousebindings.lua")
 
 dofile(awful.util.getdir("config") .. "/" .. "keybindings.lua")
-
 dofile(awful.util.getdir("config") .. "/" .. "signals.lua")
-
 
 -- Autorun programs
 autorun = true
