@@ -13,6 +13,8 @@ require("awful.autofocus")
 require("awful.rules")
 -- Theme handling library
 require("beautiful")
+  -- body
+end
 -- Notification library
 require("naughty")
 
@@ -109,6 +111,8 @@ autorunApps =
 {
    "xscreensaver -no-splash",
    "xbindkeys",
+    "wmname LG3D",
+     "xcompmgr",
    
  }
 if autorun then
